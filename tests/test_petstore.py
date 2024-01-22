@@ -5,7 +5,7 @@ from api_files.utils.load_schema import load_schema
 from api_files.utils.help_functions import post_request, get_request_with_json_response, delete_request, create_pet
 
 
-@allure.tag("petstore-api-project_testspetstore-api-project")
+@allure.tag("petstore-api-project_tests")
 @allure.severity(Severity.NORMAL)
 @allure.feature("Create pet")
 def test_create_pet(default_url):
