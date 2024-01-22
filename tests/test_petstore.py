@@ -5,7 +5,7 @@ from api_files.utils.load_schema import load_schema
 from api_files.utils.help_functions import post_request, get_request_with_json_response, delete_request, create_pet
 
 
-@allure.tag("Diploma API")
+@allure.tag("petstore-api-project_testspetstore-api-project")
 @allure.severity(Severity.NORMAL)
 @allure.feature("Create pet")
 def test_create_pet(default_url):
@@ -39,7 +39,7 @@ def test_create_pet(default_url):
         assert result.json()['id'] == 95
 
 
-@allure.tag("Diploma API")
+@allure.tag("petstore-api-project_tests")
 @allure.severity(Severity.NORMAL)
 @allure.feature("Get pet by status = available")
 def test_get_pet_by_status_available(default_url):
@@ -58,7 +58,7 @@ def test_get_pet_by_status_available(default_url):
         jsonschema.validate(result.json(), schema)
 
 
-@allure.tag("Diploma API")
+@allure.tag("petstore-api-project_tests")
 @allure.severity(Severity.NORMAL)
 @allure.feature("Get pet by status = pending")
 def test_get_pet_by_status_pending(default_url):
@@ -77,7 +77,7 @@ def test_get_pet_by_status_pending(default_url):
         jsonschema.validate(result.json(), schema)
 
 
-@allure.tag("Diploma API")
+@allure.tag("petstore-api-project_tests")
 @allure.severity(Severity.NORMAL)
 @allure.feature("Get pet by status = sold")
 def test_get_pet_by_status_sold(default_url):
@@ -95,7 +95,7 @@ def test_get_pet_by_status_sold(default_url):
     with allure.step('Проверить json схему ответа'):
         jsonschema.validate(result.json(), schema)
 
-@allure.tag("Diploma API")
+@allure.tag("petstore-api-project_tests")
 @allure.severity(Severity.NORMAL)
 @allure.feature("Delete pet by id")
 def test_delete_pet(default_url):
