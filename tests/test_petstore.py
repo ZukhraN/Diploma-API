@@ -30,7 +30,7 @@ def test_create_pet(default_url):
             "status": "available"
     }
     with allure.step('Отправить POST запрос на эндпоинт "/v2/pet"'):
-        result = post_request('/v2/pet', json=body, headers=headers)
+        result = post_request('/v2/pet', default_url, json=body, headers=headers)
     with allure.step('Проверить, что статус код равен 200'):
         assert result.status_code == 200
     with allure.step('Проверить json схему ответа'):
@@ -45,7 +45,7 @@ def test_create_pet(default_url):
 def test_get_pet_by_status_available(default_url):
     schema = load_schema('get_status_pet.json')
     with allure.step('Отправить GET запрос на эндпоинт "/v2/pet/findByStatus"'):
-        result = get_request_with_json_response('/v2/pet/findByStatus' + '?status=available')
+        result = get_request_with_json_response('/v2/pet/findByStatus' + '?status=available', default_url)
 
     with allure.step('Проверить, что статус код равен 200'):
         assert result.status_code == 200
@@ -62,9 +62,9 @@ def test_get_pet_by_status_available(default_url):
 @allure.severity(Severity.NORMAL)
 @allure.feature("Get pet by status = pending")
 def test_get_pet_by_status_pending(default_url):
-    schema = load_schema('get_status_pet.json')
+    schema = load_schema('get_status_pending.json')
     with allure.step('Отправить GET запрос на эндпоинт "/v2/pet/findByStatus"'):
-        result = get_request_with_json_response('/v2/pet/findByStatus' + '?status=pending')
+        result = get_request_with_json_response('/v2/pet/findByStatus' + '?status=pending', default_url)
 
     with allure.step('Проверить, что статус код равен 200'):
         assert result.status_code == 200
@@ -83,7 +83,7 @@ def test_get_pet_by_status_pending(default_url):
 def test_get_pet_by_status_sold(default_url):
     schema = load_schema('get_status_pet.json')
     with allure.step('Отправить GET запрос на эндпоинт "/v2/pet/findByStatus"'):
-        result = get_request_with_json_response('/v2/pet/findByStatus' + '?status=sold')
+        result = get_request_with_json_response('/v2/pet/findByStatus' + '?status=sold', default_url)
 
     with allure.step('Проверить, что статус код равен 200'):
         assert result.status_code == 200
@@ -99,9 +99,9 @@ def test_get_pet_by_status_sold(default_url):
 @allure.severity(Severity.NORMAL)
 @allure.feature("Delete pet by id")
 def test_delete_pet(default_url):
-    pet_id = create_pet()
+    pet_id = create_pet(default_url)
     with allure.step(f'Отправить DELETE запрос на эндпоинт "/v2/pet/{pet_id}"'):
-        result = delete_request(f'/v2/pet/{pet_id}')
+        result = delete_request(f'/v2/pet/{pet_id}', default_url)
     with allure.step('Проверить, что статус код равен 200'):
         assert result.status_code == 200
 

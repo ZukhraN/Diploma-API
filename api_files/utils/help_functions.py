@@ -1,10 +1,9 @@
-import json
 import logging
 import allure
 import requests
 from allure_commons.types import AttachmentType
 
-def create_pet():
+def create_pet(default_url):
     headers = {'Content-Type': 'application/json'}
     body = {
             "id": 125,
@@ -24,76 +23,39 @@ def create_pet():
             ],
             "status": "available"
     }
-    result = requests.post('https://petstore.swagger.io/v2/pet', json=body, headers=headers)
+    result = requests.post(default_url +'/v2/pet', json=body, headers=headers)
     result_id = result.json()['id']
     return result_id
 
-
-def get_request_with_json_response(url, **kwargs):
-    result = requests.get(url='https://petstore.swagger.io' + url, **kwargs)
+def attach_and_loging(result):
     allure.attach(body=result.request.url, name="Request url", attachment_type=AttachmentType.TEXT)
     allure.attach(body=result.request.method, name="Request method", attachment_type=AttachmentType.TEXT)
     allure.attach(body=str(result.status_code), name="Response status code", attachment_type=AttachmentType.TEXT,
                   extension='txt')
-    allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response body",
-                  attachment_type=AttachmentType.JSON, extension="json")
     logging.info("Request: " + result.request.url)
     logging.info("Response code " + str(result.status_code))
     logging.info("Response: " + result.text)
+
+
+def get_request_with_json_response(url, default_url, **kwargs):
+    result = requests.get(url=default_url + url, **kwargs)
+    attach_and_loging(result)
     return result
 
 
-def get_request_without_json_response(url, **kwargs):
-    result = requests.get(url='https://petstore.swagger.io' + url, **kwargs)
-    allure.attach(body=result.request.url, name="Request url", attachment_type=AttachmentType.TEXT)
-    allure.attach(body=result.request.method, name="Request method", attachment_type=AttachmentType.TEXT)
-    allure.attach(body=str(result.status_code), name="Response status code", attachment_type=AttachmentType.TEXT,
-                  extension='txt')
-    logging.info("Request: " + result.request.url)
-    logging.info("Response code " + str(result.status_code))
-    logging.info("Response: " + result.text)
+def get_request_without_json_response(url, default_url, **kwargs):
+    result = requests.get(url=default_url + url, **kwargs)
+    attach_and_loging(result)
     return result
 
 
-def delete_request(url, **kwargs):
-    result = requests.delete(url='https://petstore.swagger.io' + url, **kwargs)
-    allure.attach(body=result.request.url, name="Request url", attachment_type=AttachmentType.TEXT)
-    allure.attach(body=result.request.method, name="Request method", attachment_type=AttachmentType.TEXT)
-    allure.attach(body=str(result.status_code), name="Response status code", attachment_type=AttachmentType.TEXT,
-                  extension='txt')
-    logging.info("Request: " + result.request.url)
-    logging.info("Response code " + str(result.status_code))
-    logging.info("Response: " + result.text)
+def delete_request(url, default_url, **kwargs):
+    result = requests.delete(url=default_url + url, **kwargs)
+    attach_and_loging(result)
     return result
 
 
-def post_request(url, **kwargs):
-    result = requests.post(url='https://petstore.swagger.io' + url, **kwargs)
-    allure.attach(body=result.request.url, name="Request url", attachment_type=AttachmentType.TEXT)
-    allure.attach(body=result.request.method, name="Request method", attachment_type=AttachmentType.TEXT)
-    allure.attach(body=result.request.body, name="Request body", attachment_type=AttachmentType.JSON,
-                  extension="json")
-    allure.attach(body=str(result.status_code), name="Response status code", attachment_type=AttachmentType.TEXT,
-                  extension='txt')
-    allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response body",
-                  attachment_type=AttachmentType.JSON, extension="json")
-    logging.info("Request: " + result.request.url)
-    logging.info("Response code " + str(result.status_code))
-    logging.info("Response: " + result.text)
+def post_request(url, default_url, **kwargs):
+    result = requests.post(url=default_url + url, **kwargs)
+    attach_and_loging(result)
     return result
-
-'''
-def put_request(url, **kwargs):
-    result = requests.put(url='https://petstore.swagger.io' + url, **kwargs)
-    allure.attach(body=result.request.url, name="Request url", attachment_type=AttachmentType.TEXT)
-    allure.attach(body=result.request.method, name="Request method", attachment_type=AttachmentType.TEXT)
-    allure.attach(body=result.request.body, name="Request body", attachment_type=AttachmentType.JSON,
-                  extension="json")
-    allure.attach(body=str(result.status_code), name="Response status code", attachment_type=AttachmentType.TEXT,
-                  extension='txt')
-    allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response body",
-                  attachment_type=AttachmentType.JSON, extension="json")
-    logging.info("Request: " + result.request.url)
-    logging.info("Response code " + str(result.status_code))
-    logging.info("Response: " + result.text)
-    return result'''
