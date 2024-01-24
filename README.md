@@ -22,7 +22,7 @@
 
 ----
 
-### Проект в Jenkins
+## Проект в Jenkins
 > <a target="_blank" href="https://github.com/ZukhraN/Diploma-API">Ссылка на проект в Jenkins</a>
 
 Наш проект возможно запускать через Jenkins. Доступны следующие параметры сборки:
@@ -32,7 +32,7 @@
 
 #### Шаги для запуска автотестов через Jenkins
 
-1. Открыть страницу <a target="_blank" href="https://">проекта</a>
+1. Открыть страницу <a target="_blank" href="https://jenkins.autotests.cloud/job/hdrezka_ui_project/">проекта</a>
 2. В меню выбрать пункт `Build with Parameters`
 3. Выбрать окружение в выпадающем списке
 4. Выбрать комментарий
@@ -57,4 +57,16 @@
 
 ![Allure_suites_test](./resources/screenshots/allure_suites.png)
 
-____
+
+----
+
+### Allure TestOps
+
+Общий список всех кейсов, имеющихся в системе
+
+![Allure_suites_test](./resources/screenshots/allure_testops_results.png)
+
+Пример dashboard с общими результатами тестирования
+
+![Allure_suites_test](./resources/screenshots/dashboard.png)
+
