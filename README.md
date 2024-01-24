@@ -23,7 +23,7 @@
 ----
 
 ## Проект в Jenkins
-> <a target="_blank" href="https://github.com/ZukhraN/Diploma-API">Ссылка на проект в Jenkins</a>
+> <a target="_blank" href="https://github.com/ZukhraN/Diploma-API/">Ссылка на проект в Jenkins</a>
 
 Наш проект возможно запускать через Jenkins. Доступны следующие параметры сборки:
 * `environment` - параметр позволяет выбрать окружение, на котором будут запущены тесты
@@ -53,7 +53,7 @@
 
 #### Отчет прохождения теста
 
-В отчете для каждого кейса доступны 4 приложения. Среди них URL запроса, метод, тело запроса и куки 
+В отчете для каждого кейса есть проверка на статус запроса, проверка jsonschema
 
 ![Allure_suites_test](./resources/screenshots/allure_suites.png)
 
