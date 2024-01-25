@@ -53,7 +53,7 @@
 
 #### Отчет прохождения теста
 
-В отчете для каждого кейса есть проверка на статус запроса, проверка jsonschema
+ В отчете для каждого кейса есть проверка на статус запроса, проверка jsonschema
 
 ![Allure_suites_test](./resources/screenshots/allure_suites.png)
 
@@ -62,11 +62,11 @@
 
 ### Allure TestOps
 
-Общий список всех кейсов, имеющихся в системе
+ Общий список всех кейсов, имеющихся в системе
 
 ![Allure_suites_test](./resources/screenshots/allure_testops_results.png)
 
-Пример dashboard с общими результатами тестирования
+ Пример dashboard с общими результатами тестирования
 
 ![Allure_suites_test](./resources/screenshots/dashboard.png)
 
