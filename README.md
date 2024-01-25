@@ -23,7 +23,7 @@
 ----
 
 ## Проект в Jenkins
-> <a target="_blank" href="https://github.com/ZukhraN/Diploma-API/">Ссылка на проект в Jenkins</a>
+> <a target="_blank" href="https://github.com/ZukhraN/petstore-api-project">Ссылка на проект в Jenkins</a>
 
 Наш проект возможно запускать через Jenkins. Доступны следующие параметры сборки:
 * `environment` - параметр позволяет выбрать окружение, на котором будут запущены тесты
