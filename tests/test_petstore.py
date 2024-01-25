@@ -1,8 +1,9 @@
 import allure
 import jsonschema
 from allure_commons.types import Severity
-from api_files.utils.load_schema import load_schema
-from api_files.utils.help_functions import post_request, get_request_with_json_response, delete_request, create_pet
+from petstore_api_project_api_files.utils.load_schema import load_schema
+from petstore_api_project_api_files.utils.help_functions import post_request, get_request_with_json_response, \
+    delete_request, create_pet
 
 
 @allure.tag("petstore-api-project_tests")
@@ -12,22 +13,22 @@ def test_create_pet(default_url):
     schema = load_schema('create_pet.json')
     headers = {'Content-Type': 'application/json'}
     body = {
+        "id": 95,
+        "category": {
             "id": 95,
-            "category": {
+            "name": "dog"
+        },
+        "name": "Pluto1",
+        "photoUrls": [
+            "https://images.app.goo.gl/PmXpnRsuY6L8XdBd9"
+        ],
+        "tags": [
+            {
                 "id": 95,
                 "name": "dog"
-            },
-            "name": "Pluto1",
-            "photoUrls": [
-                "https://images.app.goo.gl/PmXpnRsuY6L8XdBd9"
-            ],
-            "tags": [
-                {
-                    "id": 95,
-                    "name": "dog"
-                }
-            ],
-            "status": "available"
+            }
+        ],
+        "status": "available"
     }
     with allure.step('Отправить POST запрос на эндпоинт "/v2/pet"'):
         result = post_request('/v2/pet', default_url, json=body, headers=headers)
@@ -95,6 +96,7 @@ def test_get_pet_by_status_sold(default_url):
     with allure.step('Проверить json схему ответа'):
         jsonschema.validate(result.json(), schema)
 
+
 @allure.tag("petstore-api-project_tests")
 @allure.severity(Severity.NORMAL)
 @allure.feature("Delete pet by id")
@@ -104,5 +106,3 @@ def test_delete_pet(default_url):
         result = delete_request(f'/v2/pet/{pet_id}', default_url)
     with allure.step('Проверить, что статус код равен 200'):
         assert result.status_code == 200
-
-
