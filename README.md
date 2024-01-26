@@ -70,3 +70,18 @@
 
 ![Allure_suites_test](./resources/screenshots/dashboard.png)
 
+----
+
+### JIRA
+
+Задание для автотеста с тест-кейсами и прогонами
+
+![Allure_suites_test](./resources/screenshots/jira.png)
+
+----
+
+### Telegram
+
+Уведомление о прохождении тестов, приходящее в телеграмм
+
+![Allure_suites_test](./resources/screenshots/telegram.jpg)
