@@ -63,7 +63,7 @@ def test_get_pet_by_status_available(default_url):
 @allure.severity(Severity.NORMAL)
 @allure.feature("Get pet by status = pending")
 def test_get_pet_by_status_pending(default_url):
-    schema = load_schema('get_status_pending.json')
+    schema = load_schema('get_status_pet.json')
     with allure.step('Отправить GET запрос на эндпоинт "/v2/pet/findByStatus"'):
         result = get_request_with_json_response('/v2/pet/findByStatus' + '?status=pending', default_url)
 
